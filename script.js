@@ -4,9 +4,10 @@ var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numberChar = "0123456789".split("")
 var specialChar = "!@#$%^&*.-_=+\/?,:;".split("");
-var passwordArray = []
-var passwordString = ""
-var getNum = ""
+var passwordArray = [];
+var passwordString = "";
+var getNum = "";
+var totalArray = [];
 
 // Write password to the #password input
 
@@ -34,30 +35,33 @@ function generatePassword() {
   getNumber()
 
   if (useLower === true) {
-    passwordArray = passwordArray.concat(lowercaseChar)
+    totalArray = totalArray.concat(lowercaseChar)
   };
 
   if (useUpper === true) {
-    passwordArray = passwordArray.concat(uppercaseChar)
+    totalArray = totalArray.concat(uppercaseChar)
   };
 
   if (useNumber === true) {
-    passwordArray = passwordArray.concat(numberChar)
+    totalArray = totalArray.concat(numberChar)
   };
 
   if (useSpecial === true) {
-    passwordArray = passwordArray.concat(specialChar)
-  };
+    totalArray = totalArray.concat(specialChar)
+  };  
 
-  for (var i = 0; i< getNum; i++) {
-    var count = passwordArray.length;
-    var randomize = Math.floor(Math.random() * count)
-    console.log(passwordArray[randomize])
+  for (var i = 0; i < getNum; i++) {
+    var count = totalArray.length;
+    var randomize = Math.floor(Math.random() * count);
+    passwordArray.push(totalArray[randomize]);
 
     // passwordString = toString(passwordArray[randomize])
     // console.log(passwordArray[Math.floor(Math.random() * (passwordArray.length - 1))])
   }
 
+  passwordString = passwordArray.join("")
+
+  return passwordString
   // Math.floor(Math.random() * 10);
 
 };
