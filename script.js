@@ -3,16 +3,34 @@ var generateBtn = document.querySelector("#generate");
 
 console.log(generateBtn);
 
-var numChar = prompt("How many characters?");
-numChar = Number(numChar)
+var getNum = prompt("How many characters?");
+getNum = Number(getNum)
 
-console.log(typeof numChar);
+// console.log(typeof getNum);
 
-var specialChar = confirm("Do you want to use special characters?");
+var useLower = confirm("Do you want to include lowercase letters?");
+var useUpper = confirm("Do you want to include uppercase letters?");
+var useNumbers = confirm("Do you want to include numbers?");
+var useSpecial = confirm("Do you want to use special characters?");
 
-console.log(typeof specialChar)
+// var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+//   "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var spChars = ["/", "_", "-", "!"]
+var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
+
+// console.log(lowercaseChar[4]);
+
+// var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
+//   "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+var numberChar = "123456789".split("");
+numberChar = Number(numberChar)
+
+// console.log(typeof numberChar)
+
+var specialChar = "!@#$%^&*.-_=+\/?,:;".split("");
 
 var passwordString = ""
 
@@ -20,7 +38,7 @@ var passwordString = ""
 
 function generatePassword() {
 
-  if ((numChar < 8) || (numChar > 128)) {
+  if ((getNum < 8) || (getNum > 128)) {
     alert("Password must be between 8 and 128 characters")
   }
 
