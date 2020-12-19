@@ -1,56 +1,54 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
-console.log(generateBtn);
-
-var getNum = prompt("How many characters?");
-getNum = Number(getNum)
-
-// console.log(typeof getNum);
-
-var useLower = confirm("Do you want to include lowercase letters?");
-var useUpper = confirm("Do you want to include uppercase letters?");
-var useNumbers = confirm("Do you want to include numbers?");
-var useSpecial = confirm("Do you want to use special characters?");
-
-// var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-//   "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
-
-// console.log(lowercaseChar[4]);
-
-// var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
-//   "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-var numberChar = "123456789".split("");
-numberChar = Number(numberChar)
-
-// console.log(typeof numberChar)
-
+var numberChar = [0,1,2,3,4,5,6,7,8,9]
 var specialChar = "!@#$%^&*.-_=+\/?,:;".split("");
-
+var passwordArray = []
 var passwordString = ""
 
 // Write password to the #password input
 
 function generatePassword() {
 
-  if ((getNum < 8) || (getNum > 128)) {
-    alert("Password must be between 8 and 128 characters")
-  }
+  var useLower = confirm("Do you want to include lowercase letters?");
+  var useUpper = confirm("Do you want to include uppercase letters?");
+  var useNumber = confirm("Do you want to include numbers?");
+  var useSpecial = confirm("Do you want to use special characters?");
 
-  else {
-    
-  }
+  function getNumber() {
+    var getNum = prompt("How many characters?");
+    getNum = Number(getNum)
 
-  if (specialChar === true) {
+    if ((getNum < 8) || (getNum > 128)) {
+      alert("Password must be between 8 and 128 characters");
+      getNumber();
+    }
+  };
 
-  }
+  getNumber()
+
+  if (useLower === true) {
+    passwordArray = passwordArray.concat(lowercaseChar)
+  };
+
+  if (useUpper === true) {
+    passwordArray = passwordArray.concat(uppercaseChar)
+  };
+
+  if (useNumber === true) {
+    passwordArray = passwordArray.concat(numberChar)
+  };
+
+  if (useSpecial === true) {
+    passwordArray = passwordArray.concat(specialChar)
+  };
+
+  // Math.floor(Math.random() * 10);
 
 };
+
+console.log(passwordArray)
 
 function writePassword() {
   var password = generatePassword();
@@ -62,3 +60,17 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+// console.log(typeof getNum);
+
+// console.log(lowercaseChar[4]);
+
+
+// var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+//   "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+// var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
+//   "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+// concat() and index
