@@ -2,10 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-var numberChar = [0,1,2,3,4,5,6,7,8,9]
+var numberChar = "0123456789".split("")
 var specialChar = "!@#$%^&*.-_=+\/?,:;".split("");
 var passwordArray = []
 var passwordString = ""
+var getNum = ""
 
 // Write password to the #password input
 
@@ -16,8 +17,12 @@ function generatePassword() {
   var useNumber = confirm("Do you want to include numbers?");
   var useSpecial = confirm("Do you want to use special characters?");
 
+  if ((useLower === false) && (useUpper === false) && (useNumber === false) && (useSpecial === false)) {
+    alert("Your password doesn't have any characters to choose from!")
+  }
+
   function getNumber() {
-    var getNum = prompt("How many characters?");
+    getNum = prompt("How many characters?");
     getNum = Number(getNum)
 
     if ((getNum < 8) || (getNum > 128)) {
@@ -44,11 +49,19 @@ function generatePassword() {
     passwordArray = passwordArray.concat(specialChar)
   };
 
+  for (var i = 0; i< getNum; i++) {
+    var count = passwordArray.length;
+    var randomize = Math.floor(Math.random() * count)
+    console.log(passwordArray[randomize])
+
+    // passwordString = toString(passwordArray[randomize])
+    // console.log(passwordArray[Math.floor(Math.random() * (passwordArray.length - 1))])
+  }
+
   // Math.floor(Math.random() * 10);
 
 };
 
-console.log(passwordArray)
 
 function writePassword() {
   var password = generatePassword();
