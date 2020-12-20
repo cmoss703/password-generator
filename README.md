@@ -22,9 +22,9 @@ I then used a for loop to generate random numbers based on how many values are i
 
 This project was successfully deployed. Need proof? Click the links below to give it a try.
 
-![Password Generator](https://cmoss703.github.io/password-generator/)
+[Password Generator](https://cmoss703.github.io/password-generator/)
 
-![Github Repo](https://github.com/cmoss703/password-generator)
+[Github Repo](https://github.com/cmoss703/password-generator)
 
 ## PROOF
 
