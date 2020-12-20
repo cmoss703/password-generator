@@ -1,38 +1,53 @@
 // Assignment Code
+
 var generateBtn = document.querySelector("#generate");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numberChar = "0123456789".split("")
-var specialChar = "!@#$%^&*.-_=+\/?,:;".split("");
-var passwordArray = [];
-var passwordString = "";
+var specialChar = "!@#$%^&*.-_=+?,:;/~".split("");
 var getNum = "";
 var totalArray = [];
+var passwordArray = [];
+var passwordString = "";
 
-// Write password to the #password input
+// Prompt to get number of characters for password.
+
+
+function getNumber() {
+  getNum = prompt("How many characters do you want your password to be? Passwords must be between 8 and 128 characters.");
+  getNum = Number(getNum)
+
+  // Alert if the number is outside of the range, forcing the user to go back and enter a valid number.
+
+  if ((getNum < 8) || (getNum > 128)) {
+    alert("Password must be between 8 and 128 characters");
+    getNumber();
+  }
+
+};
+
+// When you click "Generate password", all of this happens.
 
 function generatePassword() {
+
+  // Calls to function above, prompts number of characters.
+
+  getNumber()
+
+  // Prompts for what kind of characters to use in the password
 
   var useLower = confirm("Do you want to include lowercase letters?");
   var useUpper = confirm("Do you want to include uppercase letters?");
   var useNumber = confirm("Do you want to include numbers?");
   var useSpecial = confirm("Do you want to use special characters?");
 
+  // Alert if no characters are chosen.
+
   if ((useLower === false) && (useUpper === false) && (useNumber === false) && (useSpecial === false)) {
     alert("Your password doesn't have any characters to choose from!")
   }
 
-  function getNumber() {
-    getNum = prompt("How many characters?");
-    getNum = Number(getNum)
-
-    if ((getNum < 8) || (getNum > 128)) {
-      alert("Password must be between 8 and 128 characters");
-      getNumber();
-    }
-  };
-
-  getNumber()
+  // Depending on which prompts above are confirmed, adds characters from respective arrays to total criteria array.
 
   if (useLower === true) {
     totalArray = totalArray.concat(lowercaseChar)
@@ -48,24 +63,26 @@ function generatePassword() {
 
   if (useSpecial === true) {
     totalArray = totalArray.concat(specialChar)
-  };  
+  };
+
+  // Chooses random items from criteria array and pushes them into a new array, just for the password.
+  // The number of characters chosen in the prompt is called to select the number of items in the new array.
+  // The length of the total critera array is used in the equation to determine which random numbers to generate.
 
   for (var i = 0; i < getNum; i++) {
     var count = totalArray.length;
     var randomize = Math.floor(Math.random() * count);
     passwordArray.push(totalArray[randomize]);
-
-    // passwordString = toString(passwordArray[randomize])
-    // console.log(passwordArray[Math.floor(Math.random() * (passwordArray.length - 1))])
   }
+
+  // The new password array is then joined to form a string of characters, the password itself.
 
   passwordString = passwordArray.join("")
 
   return passwordString
-  // Math.floor(Math.random() * 10);
-
 };
 
+// The function below writes the new password into the generate box.
 
 function writePassword() {
   var password = generatePassword();
@@ -75,19 +92,6 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// Event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
-
-
-// console.log(typeof getNum);
-
-// console.log(lowercaseChar[4]);
-
-
-// var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-//   "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-// var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
-//   "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-// concat() and index
