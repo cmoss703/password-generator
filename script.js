@@ -7,9 +7,7 @@ var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numberChar = "0123456789".split("")
 var specialChar = "!@#$%^&*.-_=+?,:;/~".split("");
 var getNum = "";
-var totalArray = [];
-var passwordArray = [];
-var passwordString = "";
+
 
 // Prompt to get number of characters for password.
 
@@ -29,6 +27,10 @@ function getNumber() {
 // When you click "Generate password", all of this happens.
 
 function generatePassword() {
+
+  var totalArray = [];
+  var passwordArray = [];
+  var passwordString = "";
 
   // Calls to function above, prompts number of characters.
 
@@ -82,10 +84,6 @@ function generatePassword() {
   return passwordString
 };
 
-function startOver() {
-  location.reload()
-}
-
 // The function below writes the new password into the generate box.
 
 function writePassword() {
@@ -99,4 +97,3 @@ function writePassword() {
 // Event listener to generate button
 
 generateBtn.addEventListener("click", writePassword);
-resetBtn.addEventListener("click", startOver);
