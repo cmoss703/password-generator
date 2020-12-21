@@ -1,6 +1,7 @@
 // Assignment Code
 
 var generateBtn = document.querySelector("#generate");
+var resetBtn = document.querySelector("#startover");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numberChar = "0123456789".split("")
@@ -11,7 +12,6 @@ var passwordArray = [];
 var passwordString = "";
 
 // Prompt to get number of characters for password.
-
 
 function getNumber() {
   getNum = prompt("How many characters do you want your password to be? Passwords must be between 8 and 128 characters.");
@@ -82,6 +82,10 @@ function generatePassword() {
   return passwordString
 };
 
+function startOver() {
+  location.reload()
+}
+
 // The function below writes the new password into the generate box.
 
 function writePassword() {
@@ -95,3 +99,4 @@ function writePassword() {
 // Event listener to generate button
 
 generateBtn.addEventListener("click", writePassword);
+resetBtn.addEventListener("click", startOver);
