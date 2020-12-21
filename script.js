@@ -4,7 +4,8 @@ var generateBtn = document.querySelector("#generate");
 var resetBtn = document.querySelector("#startover");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-var numberChar = "0123456789".split("")
+// Doubled up the numbers to increase the likelihood that a number will nbe included.
+var numberChar = "01234567890123456789".split("")
 var specialChar = "!@#$%^&*.-_=+?,:;/~".split("");
 var getNum = "";
 
